@@ -18,14 +18,14 @@
   width: 75px;
 }
 
-.hidden {
-  display: none !important;
+.show-grid {
+  display: grid !important;
 }
 
 .butlist {
   background-color: blue;
   width: 200px;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(5,auto);
   grid-gap:3px;
   position: absolute;
@@ -55,15 +55,15 @@
     <div class="container">
         <div class="semi">
           <button class="opener" data-relation="1">Drop1</button>
-          <div class="butlist hidden" data-relation="1">
+          <div class="butlist" data-relation="1">
         </div>
           <div class="semi">
           <button class="opener" data-relation="2">Drop2</button>
-          <div class="butlist hidden" data-relation="2">
+          <div class="butlist" data-relation="2">
         </div>
           <div class="semi">
           <button class="opener" data-relation="3">Drop3</button>
-          <div class="butlist hidden" data-relation="3">
+          <div class="butlist" data-relation="3">
         </div>
       </div>
 </body>
@@ -78,12 +78,23 @@ for (let i = 0; i < 30; i++) {
 
 var opener = document.querySelectorAll(".opener")
 
-opener.forEach((opening) => {
-  opening.addEventListener('click', ()=> {
-    let relation = opening.dataset.relation
-    let related = document.querySelector(`[data-relation="` + relation + `"].butlist`)
-  related.classList.toggle("hidden")
-    })
+document.addEventListener('click', (event) => {
+  const isDropdownButton = event.target.matches(".opener")
+  if (!isDropdownButton && event.target.closest(".semi") != null) return
+
+  let related
+  if (isDropdownButton) {
+    let currentDropdown = event.target
+    console.log("target aquired: " + currentDropdown)
+    let relation = currentDropdown.dataset.relation
+    related = document.querySelector(`[data-relation="` + relation + `"].butlist`)
+    related.classList.toggle("show-grid")
+  }
+
+  
+  let old = document.querySelector(".show-grid")
+  if (old != null && old != related) old.classList.toggle("show-grid")
+    console.log("Old Boi: " + old)
 })
 </script>
 </html>
