@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90dvh;
+  flex-direction: column;
+}
+
+.opener {
+  width: 75px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.butlist {
+  background-color: blue;
+  width: 200px;
+  display: grid;
+  grid-template-columns: repeat(5,auto);
+  grid-gap:3px;
+  position: absolute;
+  padding:6px;
+  transform: translate(0,calc(-100%));
+  border-radius:10px;
+}
+
+.container {
+  background-color: red;
+  border: black solid 6px;
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.semi {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="semi">
+          <button class="opener" data-relation="1">Drop1</button>
+          <div class="butlist hidden" data-relation="1">
+        </div>
+          <div class="semi">
+          <button class="opener" data-relation="2">Drop2</button>
+          <div class="butlist hidden" data-relation="2">
+        </div>
+          <div class="semi">
+          <button class="opener" data-relation="3">Drop3</button>
+          <div class="butlist hidden" data-relation="3">
+        </div>
+      </div>
+</body>
+<script>
+    var butlist = document.querySelectorAll(".butlist")
+
+butlist.forEach((list) => {
+for (let i = 0; i < 30; i++) {
+  list.innerHTML += `<button class="num">` + (i+1) + `</button>`
+}
+})
+
+var opener = document.querySelectorAll(".opener")
+
+opener.forEach((opening) => {
+  opening.addEventListener('click', ()=> {
+    let relation = opening.dataset.relation
+    let related = document.querySelector(`[data-relation="` + relation + `"].butlist`)
+  related.classList.toggle("hidden")
+    })
+})
+</script>
+</html>
