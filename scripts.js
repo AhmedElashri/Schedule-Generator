@@ -76,8 +76,10 @@ function UpdateTable() {
 
     storage.day.forEach((day) => {
         var name = day[0]
+        if (name == "") return
         day[1].forEach((date) => {
             var cell = document.querySelector("#morn"+date)
+            if (cell == null) return
             if (cell.textContent != "") {
                 cell.textContent += " + " + name
             } else {
@@ -88,8 +90,10 @@ function UpdateTable() {
 
     storage.night.forEach((night) => {
         var name = night[0]
+        if (name == "") return
         night[1].forEach((date) => {
             var cell = document.querySelector("#nigh"+date)
+            if (cell == null) return
             if (cell.textContent != "") {
                 cell.textContent += " + " + name
             } else {
