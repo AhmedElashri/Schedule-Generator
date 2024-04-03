@@ -109,5 +109,19 @@
     }
 
     .countDisplay {
-        margin-top: 4rem;
+        width: 650px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15%, 1fr));
+        justify-content: space-around;
+
+        & .counter:nth-child(even) {
+            background-color: rgb(175, 175, 255);
+        }
+    }
+
+    .counter {
+        padding: 4px;
+        font-size: 18px;
+        text-align: center;
+        background-color: rgb(190, 190, 255);
     }

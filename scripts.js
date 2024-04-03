@@ -108,6 +108,8 @@ function UpdateTable() {
         }
     })
 
+    table += `<H2>Shift Numbers</H2>`
+
     table += `<div class="countDisplay">`
 
     counters.forEach(person => {
