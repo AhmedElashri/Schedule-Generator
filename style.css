@@ -73,32 +73,6 @@
         width: 64px;
     }
 
-.listOpener {
-    width: 75px;
-  }
-  
-  .show-grid {
-    display: grid !important;
-  }
-  
-  .dateList {
-    background-color: blue;
-    width: 200px;
-    display: none;
-    grid-template-columns: repeat(5,auto);
-    grid-gap:3px;
-    position: absolute;
-    padding:6px;
-    transform: translate(calc(-50% + 37px), 0);
-    border-radius:10px;
-  }
-  
-  .buttonContainer {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-
     #ahmad {
         width: 650px;
         text-align: center;
