@@ -1,4 +1,3 @@
-
 var morningCount = 2
 var nightCount = 2
 
@@ -55,6 +54,13 @@ function UpdateDateInfo() {
             month[1] = 28
         }
     }
+    let butlist = document.querySelectorAll(".dateList")
+
+    butlist.forEach((list) => {
+    for (let i = 0; i < month[1]; i++) {
+      list.innerHTML += `<button class="num">` + (i+1) + `</button>`
+    }
+    })
     UpdateTable()
 }
 
@@ -76,10 +82,8 @@ function UpdateTable() {
 
     storage.day.forEach((day) => {
         var name = day[0]
-        if (name == "") return
         day[1].forEach((date) => {
             var cell = document.querySelector("#morn"+date)
-            if (cell == null) return
             if (cell.textContent != "") {
                 cell.textContent += " + " + name
             } else {
@@ -90,10 +94,8 @@ function UpdateTable() {
 
     storage.night.forEach((night) => {
         var name = night[0]
-        if (name == "") return
         night[1].forEach((date) => {
             var cell = document.querySelector("#nigh"+date)
-            if (cell == null) return
             if (cell.textContent != "") {
                 cell.textContent += " + " + name
             } else {
@@ -256,3 +258,22 @@ createImg.addEventListener('click', CreateImage)
 var starts
 var month
 UpdateDateInfo()
+
+document.addEventListener('click', (event) => {
+    const isDropdownButton = event.target.matches(".listOpener")
+    if (!isDropdownButton && event.target.closest(".buttonContainer") != null) return
+  
+    let related
+    if (isDropdownButton) {
+      let currentDropdown = event.target
+      console.log("target aquired: " + currentDropdown)
+      let relation = currentDropdown.dataset.relation
+      related = document.querySelector(`[data-relation="` + relation + `"].dateList`)
+      related.classList.toggle("show-grid")
+    }
+  
+    
+    let old = document.querySelector(".show-grid")
+    if (old != null && old != related) old.classList.toggle("show-grid")
+      console.log("Old Boi: " + old)
+  })
