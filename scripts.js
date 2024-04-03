@@ -59,7 +59,7 @@ function UpdateDateInfo() {
 }
 
 function UpdateTable() {
-    var table = '<H1>' + MONTHS[date.getMonth()][0] + ' Schedule</H1><table id="ahmad"><tr><th class="day">Day</th><th class="date">Date</th><th class="peeps">Morning</th><th class="peeps">Night</th><th class="date">Date</th><th class="day">Day</th></tr>'
+    var table = '<H1>' + MONTHS[date.getMonth()][0] + " " + date.getFullYear() + ' Schedule</H1><table id="ahmad"><tr><th class="day">Day</th><th class="date">Date</th><th class="peeps">Morning</th><th class="peeps">Night</th><th class="date">Date</th><th class="day">Day</th></tr>'
     for (let i = 0; i < month[1]; i++) {
         let date = "<td>" + (i + 1) + "</td>" 
         let day = "<td>" + DAYS[((starts.getDay() + i + 1) % 7)] + "</td>"
@@ -69,6 +69,52 @@ function UpdateTable() {
         table += "<tr>" + day + date + morning + night + date + day + "</tr>"
     }
     table += "</table>"
+
+    // Day Counter Per Person
+
+    var counters = []
+
+    storage.day.forEach((day) => {
+        var name = day[0]
+        var count = day[1].length
+        let noNeed = true
+
+        counters.forEach(person => {
+            if (person[0] == name) {
+                person[1] += count
+                noNeed = false
+            }
+        });
+
+        if (noNeed) {
+            counters.push([name,count])
+        }
+    })
+
+    storage.night.forEach((night) => {
+        var name = night[0]
+        var count = night[1].length
+        let noNeed = true
+
+        counters.forEach(person => {
+            if (person[0] == name) {
+                person[1] += count
+                noNeed = false
+            }
+        });
+        
+        if (noNeed) {
+            counters.push([name,count])
+        }
+    })
+
+    table += `<div class="countDisplay">`
+
+    counters.forEach(person => {
+        table += `<div class="counter"> ` + person[0] + ": " + person[1] + ` </div>`
+    });
+    
+    table += `</div>`
 
     document.querySelector(".display").innerHTML = table
 
