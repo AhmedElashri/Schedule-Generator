@@ -1,0 +1,89 @@
+:root {
+	--Table-Title: #04aa6d;
+	--Table-Primary: #f2f2f2;
+	--Table-Secondary: #ffffff;
+	--Table-Friday: #c5e0b3;
+	--Shifts-Primary: #b4c6e7;
+	--Shifts-Secondary: #d9e2f3;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.schedule {
+	width: 70dvw;
+	height: 100dvh;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sidebar {
+	width: 30dvw;
+	height: 100dvh;
+	background-color: gray;
+}
+
+.table-save {
+	width: 700px;
+	padding-bottom: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	text-align: center;
+	font-size: 42px;
+}
+
+.the-table {
+	width: 650px;
+	text-align: center;
+	border-collapse: collapse;
+	border: 2px solid black;
+
+	& td,
+	& th {
+		border: 1px solid black;
+		padding: 8px;
+	}
+
+	& tr:nth-child(even) {
+		background-color: var(--Table-Primary);
+	}
+
+	& tr:nth-child(odd) {
+		background-color: var(--Table-Secondary);
+	}
+
+	& th {
+		background-color: var(--Table-Title);
+		color: white;
+	}
+
+	& td {
+		padding-block: 4px;
+	}
+
+	& .day {
+		width: 32px;
+	}
+
+	& .date {
+		width: 48px;
+	}
+
+	& .people {
+		width: 200px;
+	}
+
+	& .friday {
+		background-color: var(--Table-Friday) !important;
+	}
+}
