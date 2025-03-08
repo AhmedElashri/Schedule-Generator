@@ -1,10 +1,10 @@
 //TODO function to render empty table
 function createTable() {
 	const tableDisplay = document.querySelector(".table-save")
+	tableDisplay.textContent = ""
 
 	const title = document.createElement("h1")
-	title.textContent =
-		getTextMonth() + " " + selectedDate.getFullYear() + " Schedule"
+	title.textContent = GetTextMonth() + " " + GetTextYear() + " Schedule"
 	tableDisplay.appendChild(title)
 
 	const table = document.createElement("table")

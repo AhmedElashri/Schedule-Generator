@@ -24,10 +24,12 @@ function ResetTime() {
 
 function SelectYear(offset) {
 	selectedDate.setFullYear(currentDate.getFullYear() + offset)
+	createTable()
 }
 
 function SelectMonth(month) {
 	selectedDate.setMonth(month)
+	createTable()
 }
 
 function GetFirstDay() {
@@ -44,6 +46,10 @@ function GetDayCount() {
 	return lastDay.getDate()
 }
 
-function getTextMonth() {
+function GetTextMonth() {
 	return MONTHS[selectedDate.getMonth()]
+}
+
+function GetTextYear(offset = 0) {
+	return Number(selectedDate.getFullYear()) + Number(offset)
 }

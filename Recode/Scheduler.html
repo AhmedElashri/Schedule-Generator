@@ -5,16 +5,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Scheduler</title>
 		<link rel="stylesheet" href="style.css" />
-		<script src="scripts.js" defer></script>
 		<script src="timeHandler.js" defer></script>
 		<script src="html2canvas.js" defer></script>
 		<script src="dataManagement.js" defer></script>
 		<script src="tableRenderer.js" defer></script>
+		<script src="scripts.js" defer></script>
+		<script src="listeners.js" defer></script>
 	</head>
 	<body>
 		<div class="schedule">
 			<div class="table-save"></div>
 		</div>
-		<div class="sidebar"></div>
+		<div class="sidebar">
+			<div class="sidebar-interior">
+				<div class="year-month-selector">
+					<div class="year-mod-container"></div>
+					<div class="month-mod-container"></div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

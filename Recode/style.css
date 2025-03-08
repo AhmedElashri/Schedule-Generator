@@ -20,12 +20,19 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow: auto;
 }
 
 .sidebar {
 	width: 30dvw;
 	height: 100dvh;
-	background-color: gray;
+	background-color: darkgray;
+}
+
+.sidebar-interior {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
 }
 
 .table-save {
@@ -86,4 +93,9 @@ h1 {
 	& .friday {
 		background-color: var(--Table-Friday) !important;
 	}
+}
+
+.year-month-selector {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
