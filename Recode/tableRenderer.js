@@ -1,5 +1,6 @@
 //TODO function to render empty table
 function createTable() {
+	width = GetShiftCount()
 	const tableDisplay = document.querySelector(".table-save")
 	tableDisplay.textContent = ""
 
@@ -13,7 +14,20 @@ function createTable() {
 	const tableheader = document.createElement("thead")
 	const headerRow = document.createElement("tr")
 
-	const headers = ["Day", "Date", "Morning", "Night", "Date", "Day"]
+	const headers = ["Day", "Date", "Date", "Day"]
+	var headersAdded = ["Morning", "Night"]
+
+	if (width > 2) {
+		headersAdded = []
+		for (let i = 0; i < width; i++) {
+			headersAdded.push("Time " + (i + 1))
+		}
+	} else if (width == 1) {
+		headersAdded = ["Shift"]
+	}
+
+	headers.splice(2,0,...headersAdded)
+	
 	headers.forEach((headerText) => {
 		const th = document.createElement("th")
 		th.textContent = headerText
@@ -42,22 +56,15 @@ function createTable() {
 		tr.appendChild(date)
 
 		//morning
-		let morning = document.createElement("td")
-		morning.textContent = row[2]
-		morning.classList.add("people")
-		morning.dataset.x = 2
-		morning.dataset.y = row[1] - 1
+		for (let i = 0; i < width; i++) {
+			let td = document.createElement("td")
+			td.textContent = row[i+2]
+			td.classList.add("people")
+			td.dataset.x = i+2
+			td.dataset.y = row[1] - 1
 
-		tr.appendChild(morning)
-
-		//night
-		let night = document.createElement("td")
-		night.textContent = row[3]
-		night.classList.add("people")
-		night.dataset.x = 3
-		night.dataset.y = row[1] - 1
-
-		tr.appendChild(night)
+			tr.appendChild(td)
+		}
 
 		//date
 		let date2 = document.createElement("td")
@@ -77,11 +84,10 @@ function createTable() {
 	})
 	table.appendChild(tbody)
 
-	// Add table to the DOM
+	// Add table to the DOM (imma keep this comment, idk why i said dom)
 	tableDisplay.appendChild(table)
 }
 
-createTable()
 
 //TODO function to populate table with data inside datalist
 //TODO Shift numbers with on or off for it
