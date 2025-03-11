@@ -1,127 +1,104 @@
-    body {
-        display: flex;
-        height: 100dvh;
-        margin: 0;
-    }
+:root {
+	--Table-Title: #04aa6d;
+	--Table-Primary: #f2f2f2;
+	--Table-Secondary: #ffffff;
+	--Table-Friday: #c5e0b3;
+	--Shifts-Primary: #b4c6e7;
+	--Shifts-Secondary: #d9e2f3;
+}
 
-    .table-view {
-        padding: 16px;
-        width: 70%;
-        overflow-y: auto;
-    }
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
 
-    h1 {
-        text-align: center;
-        font-size: 42px;
-    }
+.schedule {
+	width: 70dvw;
+	height: 100dvh;
+	background-color: white;
+	display: flex;
+	align-items: baseline;
+	overflow: auto;
+}
 
-    .display {
-        width: 700px;
-        padding-bottom: 24px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.sidebar {
+	width: 30dvw;
+	height: 100dvh;
+	background-color: darkgray;
+}
 
-    .sidebar {
-        padding: 16px;
-        background-color: gray;
-        color: white;
-        width: 30%;
-    }
+.sidebar-interior {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+}
 
-    .select-container {
-        margin-block: 8px;
-    }
+.table-save {
+	width: fit-content;
+	padding-bottom: 24px;
+	padding-inline: 2rem;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
-    .people-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        min-height: 30px;
-        margin-block: 8px;
-        border: black 2px solid;
-    }
+h1 {
+	text-align: center;
+	font-size: 42px;
+}
 
-    .morning {
-        background-color: orange;
-    }
+.the-table {
+	width: 650px;
+	text-align: center;
+	border-collapse: collapse;
+	border: 2px solid black;
 
-    .night {
-        background-color: blue;
-    }
+	& td,
+	& th {
+		border: 1px solid black;
+		padding: 8px;
+	}
 
-    .person-holder {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-    }
+	& tr:nth-child(even) {
+		background-color: var(--Table-Primary);
+	}
 
-    .button-space {
-        display: flex;
-        justify-content: space-between;
-    }
+	& tr:nth-child(odd) {
+		background-color: var(--Table-Secondary);
+	}
 
-    textarea {
-        resize: none;
-    }
+	& th {
+		background-color: var(--Table-Title);
+		color: white;
+	}
 
-    input {
-        width: 64px;
-    }
+	& td {
+		padding-block: 4px;
+	}
 
-    #ahmad {
-        width: 650px;
-        text-align: center;
-        border-collapse: collapse;
-        border: 2px solid black;
+	& .day {
+		width: 32px;
+	}
 
-        & td, & th {            
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
+	& .date {
+		width: 48px;
+	}
 
-        & tr:nth-child(even){background-color: #f2f2f2;}
+	& .people {
+		width: 200px;
+		min-width: 4.5rem;
+	}
 
-        & th {
-            background-color: #04AA6D;
-            color: white;
-        }
+	& .friday {
+		background-color: var(--Table-Friday) !important;
+	}
+}
 
-        & td {
-            padding-block: 4px;
-        } 
-
-        & .day {
-            width: 32px;
-        }
-
-        & .date {
-            width: 48px;
-        }
-
-        & .peeps {
-            width: 200px;
-        }
-    }
-
-    .countDisplay {
-        width: 650px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(15%, 1fr));
-        justify-content: space-around;
-
-        & .counter:nth-child(even) {
-            background-color: rgb(175, 175, 255);
-        }
-    }
-
-    .counter {
-        padding: 4px;
-        font-size: 18px;
-        text-align: center;
-        background-color: rgb(190, 190, 255);
-    }
+.year-month-selector {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
