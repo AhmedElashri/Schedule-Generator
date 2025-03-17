@@ -1,4 +1,3 @@
-//TODO function to render empty table
 function createTable() {
 	width = GetShiftCount()
 	const tableDisplay = document.querySelector(".table-save")
@@ -86,8 +85,17 @@ function createTable() {
 
 	// Add table to the DOM (imma keep this comment, idk why i said dom)
 	tableDisplay.appendChild(table)
+	CreateShifts()
 }
 
+//TODO Shift numbers with on or off for it. Use Flexbox with flex-grow css 
+function CreateShifts() {
+	const tableDisplay = document.querySelector(".table-save")
 
-//TODO function to populate table with data inside datalist
-//TODO Shift numbers with on or off for it
+	const title = document.createElement("h2")
+	title.textContent = "Shifts"
+	tableDisplay.appendChild(title)
+
+	//!min width for col = 24ch
+	//TODO Add shift display using GetShiftsFromNames()
+}
