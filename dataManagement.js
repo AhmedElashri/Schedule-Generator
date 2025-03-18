@@ -32,9 +32,7 @@ function EditDataList(x, y, value) {
 
 function GetUniqueNames() {
 	var nameList = datalist.map(subarray => subarray.slice(-GetShiftCount()))
-	console.log(nameList)
 	var flatNameList = nameList.flat()
-	console.log(flatNameList)
 	var uniqueNames = [...new Set(flatNameList)]
 	return uniqueNames
 }
@@ -45,7 +43,6 @@ function GetShiftsFromNames() {
 	uniqueNames.forEach(name => {
 		shifts.push([name, datalist.flat().filter(data => data === name).length])
 	});
-	return shifts
 }
 
 function AddTestData(x = 7) {

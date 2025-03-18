@@ -85,11 +85,13 @@ function createTable() {
 
 	// Add table to the DOM (imma keep this comment, idk why i said dom)
 	tableDisplay.appendChild(table)
-	CreateShifts()
+	let shiftEnabler = document.querySelector("#shift-enabler")
+	if (shiftEnabler.checked) CreateShifts()
 }
 
 //TODO Shift numbers with on or off for it. Use Flexbox with flex-grow css 
 function CreateShifts() {
+
 	const tableDisplay = document.querySelector(".table-save")
 
 	const title = document.createElement("h2")
@@ -98,4 +100,31 @@ function CreateShifts() {
 
 	//!min width for col = 24ch
 	//TODO Add shift display using GetShiftsFromNames()
+	const shiftTable = document.createElement("div")
+	shiftTable.classList.add("shifts")
+	shiftTable.style.width = document.querySelector(".the-table").offsetWidth + "px"
+
+	GetShiftsFromNames()
+	shifts.forEach(person => {
+		let shiftPerson = document.createElement("div")
+		shiftPerson.classList.add("shift-person")
+		shiftPerson.textContent = person[0] + ": " + person[1]
+		shiftTable.appendChild(shiftPerson)
+	})
+
+	tableDisplay.appendChild(shiftTable)
+	
+	
+	//Resize shifts width to match longest name
+	let shiftPeople = document.querySelectorAll(".shift-person")
+	let mostCharacters = 0
+
+	shiftPeople.forEach(person => {
+		if (person.textContent.length > mostCharacters) mostCharacters = person.textContent.length
+	})
+
+	shiftPeople.forEach(person => {
+		person.style.minWidth = (mostCharacters * 9) + "px"
+	})
+	//End of Resize
 }
