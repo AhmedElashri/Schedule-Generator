@@ -32,5 +32,11 @@ function ReadShiftMetadata(image) {
     for (let i = 0; i < arrayData.length; i+=shiftCount) {
         data.push(arrayData.slice(i, i + shiftCount))
     }
-    return data
+    
+    ImportShiftData(data)
+}
+
+function ImportShiftData(data) {
+    datalist = data
+    createTable()
 }

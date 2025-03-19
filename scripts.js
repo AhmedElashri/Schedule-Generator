@@ -2,6 +2,7 @@ const YEAR_CONTAINER = document.querySelector(".year-mod-container")
 const MONTH_CONTAINER = document.querySelector(".month-mod-container")
 const SHIFT_CONTAINER = document.querySelector(".shift-counter-container")
 const SHIFT_ENABLER_CONTAINER = document.querySelector(".shift-enabler-container")
+const FILE_INPUT_CONTAINER = document.querySelector(".file-input-container")
 
 //- Year Selector
 var yearLabel = document.createElement("label")
@@ -67,3 +68,23 @@ shiftEnabler.id = "shift-enabler"
 shiftEnabler.type = "checkbox"
 shiftEnabler.checked = true
 SHIFT_ENABLER_CONTAINER.appendChild(shiftEnabler)
+
+//Input File 
+var fileInputLabel = document.createElement("label")
+fileInputLabel.setAttribute("for", "file-input")
+fileInputLabel.textContent = "Select File: "
+FILE_INPUT_CONTAINER.appendChild(fileInputLabel)
+
+var fileInput = document.createElement("input")
+fileInput.name = "file-input"
+fileInput.id = "file-input"
+fileInput.type = "file"
+fileInput.accept = ".jpg"
+FILE_INPUT_CONTAINER.appendChild(fileInput)
+
+//Test Data Button
+var testDataContainer = document.querySelector(".testdata")
+var testDataButton = document.createElement("button")
+testDataButton.id = "test-data-button"
+testDataButton.textContent = "AddTestData"
+testDataContainer.appendChild(testDataButton)
