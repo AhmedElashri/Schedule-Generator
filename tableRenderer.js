@@ -106,6 +106,9 @@ function CreateShifts() {
 
 	GetShiftsFromNames()
 	shifts.forEach(person => {
+		console.log(person)
+		if (person[0] == null || person[0] == "") return
+		console.log(person[0])
 		let shiftPerson = document.createElement("div")
 		shiftPerson.classList.add("shift-person")
 		shiftPerson.textContent = person[0] + ": " + person[1]
