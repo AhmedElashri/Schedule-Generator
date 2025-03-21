@@ -98,6 +98,10 @@ h2 {
 	& .people {
 		width: 200px;
 		min-width: 4.5rem;
+
+		&:hover {
+			box-shadow: 0 0 2px 2px inset blue ;
+		}
 	}
 
 	& .friday {

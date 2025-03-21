@@ -6,13 +6,12 @@ function GetShiftCount() {
 	return Number(datalist[0].length - 2)
 }
 
-function CreateDataList(width = 2) {
-	var y = GetDayCount()
+function CreateDataList(width = 2, height = GetDayCount()) {
 	var array = []
 	var dayIndex = GetFirstDay()
 	if (width <= 0) width = 2 
 
-	for (let i = 0; i < y; i++) {
+	for (let i = 0; i < height; i++) {
 		let row = [DAYS[(dayIndex + i) % 7], i + 1]
 		for (let i = 0; i < width; i++) {
 			row.push(null)

@@ -124,9 +124,9 @@ function CreateShifts() {
 	shiftPeople.forEach(person => {
 		if (person.textContent.length > mostCharacters) mostCharacters = person.textContent.length
 	})
-
+	
 	shiftPeople.forEach(person => {
-		person.style.minWidth = (mostCharacters * 9) + "px"
+		person.style.minWidth = "max(16.5ch" + (mostCharacters * 9) + "px)"
 	})
 	//End of Resize
 }
