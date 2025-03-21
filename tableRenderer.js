@@ -54,7 +54,7 @@ function createTable() {
 
 		tr.appendChild(date)
 
-		//morning
+		//People
 		for (let i = 0; i < width; i++) {
 			let td = document.createElement("td")
 			td.textContent = row[i+2]
@@ -82,6 +82,7 @@ function createTable() {
 		tr.appendChild(day2)
 	})
 	table.appendChild(tbody)
+	table.addEventListener("click",NameSetter)
 
 	// Add table to the DOM (imma keep this comment, idk why i said dom)
 	tableDisplay.appendChild(table)
@@ -106,7 +107,6 @@ function CreateShifts() {
 
 	GetShiftsFromNames()
 	shifts.forEach(person => {
-		console.log(person)
 		if (person[0] == null || person[0] == "") return
 		console.log(person[0])
 		let shiftPerson = document.createElement("div")

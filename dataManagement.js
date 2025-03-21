@@ -1,6 +1,6 @@
 var datalist = []
 var shifts = []
-CreateDataList()
+var selectedName = ""
 
 function GetShiftCount() {
 	return Number(datalist[0].length - 2)

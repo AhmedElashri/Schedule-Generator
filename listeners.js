@@ -21,8 +21,7 @@ function ShiftEnablerChecked() {
 	createTable()
 }
 
-
-FILE_INPUT.addEventListener("change", event=> {
+function FileInputUsed(event){
 	var file = event.target.files[0]
 
 	if (file) {
@@ -33,12 +32,20 @@ FILE_INPUT.addEventListener("change", event=> {
 		}
 		reader.readAsDataURL(file)
 	}
-})
+}
+
+function NameSetter(event) {
+	var cell = event.target
+	if (cell && cell.classList.contains("people") && cell.tagName ==="TD") {
+		EditDataList(cell.dataset.x, cell.dataset.y, selectedName)
+	}
+}
 
 function TestData() {
 	AddTestData()
 }
 
+FILE_INPUT.addEventListener("change", FileInputUsed)
 YEAR_SELECTOR.addEventListener("change", YearSelectorSelect)
 MONTH_SELECTOR.addEventListener("change", MonthSelectorSelect)
 SHIFT_SELECTOR.addEventListener("change", ShiftSelectorSelect)
