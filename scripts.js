@@ -3,6 +3,7 @@ const MONTH_CONTAINER = document.querySelector(".month-mod-container")
 const SHIFT_CONTAINER = document.querySelector(".shift-counter-container")
 const SHIFT_ENABLER_CONTAINER = document.querySelector(".shift-enabler-container")
 const FILE_INPUT_CONTAINER = document.querySelector(".file-input-container")
+const NAME_SELECTOR_CONTAINER = document.querySelector(".name-selector-container")
 
 //- Year Selector
 var yearLabel = document.createElement("label")
@@ -56,7 +57,7 @@ shiftSelector.type = "number"
 shiftSelector.value = 2
 SHIFT_CONTAINER.appendChild(shiftSelector)
 
-//Shift Count Selector
+//Shift Enabler
 var shiftEnablerLabel = document.createElement("label")
 shiftEnablerLabel.setAttribute("for", "shift-enabler")
 shiftEnablerLabel.textContent = "Enable Shift Table: "
@@ -88,3 +89,14 @@ var testDataButton = document.createElement("button")
 testDataButton.id = "test-data-button"
 testDataButton.textContent = "AddTestData"
 testDataContainer.appendChild(testDataButton)
+
+//Name Selector
+var nameSelectorLabel = document.createElement("label")
+nameSelectorLabel.setAttribute("for", "name-selector")
+nameSelectorLabel.textContent = "Select Name: "
+NAME_SELECTOR_CONTAINER.appendChild(nameSelectorLabel)
+
+var nameSelector = document.createElement("input")
+nameSelector.name = "name-selector"
+nameSelector.id = "name-selector"
+NAME_SELECTOR_CONTAINER.appendChild(nameSelector)

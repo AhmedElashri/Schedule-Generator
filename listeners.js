@@ -4,6 +4,7 @@ const SHIFT_SELECTOR = document.querySelector("#shift-selector")
 const SHIFT_ENABLER = document.querySelector("#shift-enabler")
 const TEST_DATA = document.querySelector("#test-data-button")
 const FILE_INPUT = document.querySelector("#file-input")
+const NAME_SELECTOR = document.querySelector("#name-selector")
 
 function MonthSelectorSelect() {
 	SelectMonth(Number(this.value))
@@ -41,13 +42,18 @@ function NameSetter(event) {
 	}
 }
 
+function SelectName() {
+	selectedName = this.value
+}
+
 function TestData() {
 	AddTestData()
 }
 
-FILE_INPUT.addEventListener("change", FileInputUsed)
 YEAR_SELECTOR.addEventListener("change", YearSelectorSelect)
 MONTH_SELECTOR.addEventListener("change", MonthSelectorSelect)
 SHIFT_SELECTOR.addEventListener("change", ShiftSelectorSelect)
 SHIFT_ENABLER.addEventListener("change", ShiftEnablerChecked)
+FILE_INPUT.addEventListener("change", FileInputUsed)
+NAME_SELECTOR.addEventListener("change", SelectName)
 TEST_DATA.addEventListener("click", TestData)
