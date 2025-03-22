@@ -1,14 +1,15 @@
-function CreateImage() {
+function SaveImage() {
     var table = document.querySelector(".table-save")
     
     html2canvas(table).then(canvas => {
-        var image = canvas.toDataURL('image/jpeg')
+        var image = canvas.toDataURL("image/jpeg")
 
         var imageMeta = AddShiftMetadata(image)
 
-        var link = document.createElement('a')
-        link.setAttribute('download', GetTextMonth() + ' Schedule.jpg')
-        link.setAttribute('href', imageMeta.replace("image/jpeg", "image/octet-stream"))
+        var link = document.createElement("a")
+        let tableTitle = document.querySelector(".table-title").textContent
+        link.setAttribute("download", tableTitle + ".jpg")
+        link.setAttribute("href", imageMeta.replace("image/jpeg", "image/octet-stream"))
         link.click()
     })
 }
