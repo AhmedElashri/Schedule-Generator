@@ -4,6 +4,7 @@ const SHIFT_CONTAINER = document.querySelector(".shift-counter-container")
 const SHIFT_ENABLER_CONTAINER = document.querySelector(".shift-enabler-container")
 const FILE_INPUT_CONTAINER = document.querySelector(".file-input-container")
 const NAME_SELECTOR_CONTAINER = document.querySelector(".name-selector-container")
+const CUSTOM_TABLE_TITLE = document.querySelector(".custom-table-title-container")
 
 //- Year Selector
 var yearLabel = document.createElement("label")
@@ -100,3 +101,14 @@ var nameSelector = document.createElement("input")
 nameSelector.name = "name-selector"
 nameSelector.id = "name-selector"
 NAME_SELECTOR_CONTAINER.appendChild(nameSelector)
+
+//Custom Table Title
+var customTableTitleLabel = document.createElement("label")
+customTableTitleLabel.setAttribute("for", "custom-table-name")
+customTableTitleLabel.textContent = "Insert Custom Table Name: "
+CUSTOM_TABLE_TITLE.appendChild(customTableTitleLabel)
+
+var customTableTitle = document.createElement("input")
+customTableTitle.name = "custom-table-title"
+customTableTitle.id = "custom-table-title"
+CUSTOM_TABLE_TITLE.appendChild(customTableTitle)

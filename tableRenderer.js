@@ -4,7 +4,12 @@ function createTable() {
 	tableDisplay.textContent = ""
 
 	const title = document.createElement("h1")
-	title.textContent = GetTextMonth() + " " + GetTextYear() + " Schedule"
+	title.classList.add("table-title")
+	if (CUSTOM_TABLE_TITLE_SELECTOR.value != "" && CUSTOM_TABLE_TITLE_SELECTOR.value !== null) {
+		title.textContent = CUSTOM_TABLE_TITLE_SELECTOR.value
+	} else {
+		title.textContent = GetTextMonth() + " " + GetTextYear() + " Schedule"
+	}
 	tableDisplay.appendChild(title)
 
 	const table = document.createElement("table")

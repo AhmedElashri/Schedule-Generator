@@ -14,8 +14,13 @@ function CreateImage() {
 }
 
 function AddShiftMetadata(image) {
-    var exifObj = {'Exif': {0xA434: [datalist[0].length,datalist]}}
-
+    let tableTitle = document.querySelector(".table-title").textContent
+    let saveJson = {
+        "table-name": tableTitle,
+        "table-shift-count": datalist[0].length,
+        "table-data":datalist
+    }
+    var exifObj = {'Exif': {0xA434: JSON.stringify(saveJson)}}
     var imageWithMetadata = piexif.insert(piexif.dump(exifObj), image);
 
     return imageWithMetadata;
@@ -24,19 +29,14 @@ function AddShiftMetadata(image) {
 function ReadShiftMetadata(image) {
     var metadata = (piexif.load(image))
     var rawData = metadata.Exif[42036]
-    var arrayData = rawData.split(',')
-    var shiftCount = Number(arrayData[0])
-    arrayData = arrayData.slice(1)
+    var JsonData = JSON.parse(rawData)
 
-    var data = []
-    for (let i = 0; i < arrayData.length; i+=shiftCount) {
-        data.push(arrayData.slice(i, i + shiftCount))
-    }
-    
-    ImportShiftData(data)
+    CUSTOM_TABLE_TITLE_SELECTOR.value = JsonData["table-name"]
+
+    ImportShiftData(JsonData["table-data"])
 }
 
-function ImportShiftData(data) {
-    datalist = data
-    createTable()
+ function ImportShiftData(data) {
+     datalist = data
+     createTable()
 }
