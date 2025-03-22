@@ -37,7 +37,9 @@ function createTable() {
 	table.appendChild(tableheader)
 
 	const tbody = document.createElement("tbody")
-	datalist.forEach((row) => {
+	
+	for (let i = 0; i < datalist.length; i++) {
+		let row = datalist[i]
 		const tr = document.createElement("tr")
 		//day
 		let day = document.createElement("td")
@@ -55,12 +57,12 @@ function createTable() {
 		tr.appendChild(date)
 
 		//People
-		for (let i = 0; i < width; i++) {
+		for (let j = 0; j < width; j++) {
 			let td = document.createElement("td")
-			td.textContent = row[i+2]
+			td.textContent = row[j+2]
 			td.classList.add("people")
-			td.dataset.x = i+2
-			td.dataset.y = row[1] - 1
+			td.dataset.x = j+2
+			td.dataset.y = i
 
 			tr.appendChild(td)
 		}
@@ -80,7 +82,7 @@ function createTable() {
 		day2.classList.add("day")
 
 		tr.appendChild(day2)
-	})
+	}
 	table.appendChild(tbody)
 	table.addEventListener("click",NameSetter)
 

@@ -6,21 +6,13 @@ const TEST_DATA = document.querySelector("#test-data-button")
 const FILE_INPUT = document.querySelector("#file-input")
 const NAME_SELECTOR = document.querySelector("#name-selector")
 
-function MonthSelectorSelect() {
-	SelectMonth(Number(this.value))
-}
-
-function YearSelectorSelect() {
-	SelectYear(Number(this.value))
-}
-
-function ShiftSelectorSelect() {
-	CreateDataList(this.value)
-}
-
-function ShiftEnablerChecked() {
-	createTable()
-}
+YEAR_SELECTOR.addEventListener("change", YearSelectorSelect)
+MONTH_SELECTOR.addEventListener("change", MonthSelectorSelect)
+SHIFT_SELECTOR.addEventListener("change", ShiftSelectorSelect)
+SHIFT_ENABLER.addEventListener("change", ShiftEnablerChecked)
+FILE_INPUT.addEventListener("change", FileInputUsed)
+NAME_SELECTOR.addEventListener("change", SelectName)
+TEST_DATA.addEventListener("click", TestData)
 
 function FileInputUsed(event){
 	var file = event.target.files[0]
@@ -42,6 +34,22 @@ function NameSetter(event) {
 	}
 }
 
+function MonthSelectorSelect() {
+	SelectMonth(Number(this.value))
+}
+
+function YearSelectorSelect() {
+	SelectYear(Number(this.value))
+}
+
+function ShiftSelectorSelect() {
+	CreateDataList(this.value)
+}
+
+function ShiftEnablerChecked() {
+	createTable()
+}
+
 function SelectName() {
 	selectedName = this.value
 }
@@ -50,10 +58,3 @@ function TestData() {
 	AddTestData()
 }
 
-YEAR_SELECTOR.addEventListener("change", YearSelectorSelect)
-MONTH_SELECTOR.addEventListener("change", MonthSelectorSelect)
-SHIFT_SELECTOR.addEventListener("change", ShiftSelectorSelect)
-SHIFT_ENABLER.addEventListener("change", ShiftEnablerChecked)
-FILE_INPUT.addEventListener("change", FileInputUsed)
-NAME_SELECTOR.addEventListener("change", SelectName)
-TEST_DATA.addEventListener("click", TestData)
