@@ -112,3 +112,10 @@ var customTableTitle = document.createElement("input")
 customTableTitle.name = "custom-table-title"
 customTableTitle.id = "custom-table-title"
 CUSTOM_TABLE_TITLE.appendChild(customTableTitle)
+
+//Test Data Button
+var saveImageContainer = document.querySelector(".save-image-container")
+var SaveImageButton = document.createElement("button")
+SaveImageButton.id = "save-image"
+SaveImageButton.textContent = "Save As Image"
+saveImageContainer.appendChild(SaveImageButton)

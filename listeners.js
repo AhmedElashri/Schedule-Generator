@@ -6,6 +6,7 @@ const TEST_DATA = document.querySelector("#test-data-button")
 const FILE_INPUT = document.querySelector("#file-input")
 const NAME_SELECTOR = document.querySelector("#name-selector")
 const CUSTOM_TABLE_TITLE_SELECTOR = document.querySelector("#custom-table-title")
+const SAVE_IMAGE = document.querySelector("#save-image")
 
 YEAR_SELECTOR.addEventListener("change", YearSelectorSelect)
 MONTH_SELECTOR.addEventListener("change", MonthSelectorSelect)
@@ -15,6 +16,7 @@ FILE_INPUT.addEventListener("change", FileInputUsed)
 NAME_SELECTOR.addEventListener("change", SelectName)
 TEST_DATA.addEventListener("click", TestData)
 CUSTOM_TABLE_TITLE_SELECTOR.addEventListener("change", ChangeTableTitle)
+SAVE_IMAGE.addEventListener("click", SaveImage)
 
 function ChangeTableTitle() {
 	createTable()
