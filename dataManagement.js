@@ -1,6 +1,7 @@
 var datalist = []
 var shifts = []
 var selectedName = ""
+const SEPARATORS = /[ ,;|_\-:/+]+/
 
 function GetShiftCount() {
 	return Number(datalist[0].length - 2)
@@ -31,7 +32,10 @@ function EditDataList(x, y, value) {
 
 function GetUniqueNames() {
 	var nameList = datalist.map(subarray => subarray.slice(-GetShiftCount()))
-	var flatNameList = nameList.flat()
+	var flatNameList = nameList.flat().flatMap(str => String(str)
+		.split(SEPARATORS)
+		.map(s => s.trim())
+	)
 	var uniqueNames = [...new Set(flatNameList)]
 	return uniqueNames
 }
@@ -39,9 +43,16 @@ function GetUniqueNames() {
 function GetShiftsFromNames() {
 	shifts = []
 	var uniqueNames = GetUniqueNames()
+
+	var dataSplitDelimiters = datalist.flat().flatMap(str => String(str)
+		.split(SEPARATORS)
+		.map(s => s.trim())
+	)
+
 	uniqueNames.forEach(name => {
-		shifts.push([name, datalist.flat().filter(data => data === name).length])
+		shifts.push([name, dataSplitDelimiters.filter(data => data === name).length])
 	});
+	console.log(dataSplitDelimiters)
 }
 
 function AddTestData(x = 7) {

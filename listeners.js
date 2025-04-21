@@ -59,7 +59,7 @@ function ShiftEnablerChecked() {
 }
 
 function SelectName() {
-	selectedName = this.value
+	selectedName = this.value.trim()
 }
 
 function TestData() {
