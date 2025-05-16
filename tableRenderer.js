@@ -97,7 +97,6 @@ function createTable() {
 	if (shiftEnabler.checked) CreateShifts()
 }
 
-//TODO Shift numbers with on or off for it. Use Flexbox with flex-grow css 
 function CreateShifts() {
 
 	const tableDisplay = document.querySelector(".table-save")
@@ -107,7 +106,7 @@ function CreateShifts() {
 	tableDisplay.appendChild(title)
 
 	//!min width for col = 24ch
-	//TODO Add shift display using GetShiftsFromNames()
+	ß//TODO Add shift display using GetShiftsFromNames()
 	const shiftTable = document.createElement("div")
 	shiftTable.classList.add("shifts")
 	shiftTable.style.width = document.querySelector(".the-table").offsetWidth + "px"

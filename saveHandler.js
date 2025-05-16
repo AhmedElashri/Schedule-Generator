@@ -14,6 +14,9 @@ function SaveImage() {
     })
 }
 
+//New Save Handler that uses hidden pixels inside of
+//image to decode the shift from binary use a very light gray and a slightly darker gray
+
 function AddShiftMetadata(image) {
     let tableTitle = document.querySelector(".table-title").textContent
     let saveJson = {

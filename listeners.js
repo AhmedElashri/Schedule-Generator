@@ -44,10 +44,12 @@ function NameSetter(event) {
 
 function MonthSelectorSelect() {
 	SelectMonth(Number(this.value))
+	CreateDataList(SHIFT_SELECTOR.value)
 }
 
 function YearSelectorSelect() {
 	SelectYear(Number(this.value))
+	CreateDataList(SHIFT_SELECTOR.value)
 }
 
 function ShiftSelectorSelect() {
