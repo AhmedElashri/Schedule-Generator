@@ -106,7 +106,7 @@ function CreateShifts() {
 	tableDisplay.appendChild(title)
 
 	//!min width for col = 24ch
-	ß//TODO Add shift display using GetShiftsFromNames()
+	//TODO Add shift display using GetShiftsFromNames()
 	const shiftTable = document.createElement("div")
 	shiftTable.classList.add("shifts")
 	shiftTable.style.width = document.querySelector(".the-table").offsetWidth + "px"
