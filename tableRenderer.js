@@ -17,22 +17,26 @@ function createTable() {
 
 	const tableheader = document.createElement("thead")
 	const headerRow = document.createElement("tr")
-
-	const headers = ["Day", "Date", "Date", "Day"]
-	var headersAdded = ["Morning", "Night"]
-
-	if (width > 2) {
-		headersAdded = []
-		for (let i = 0; i < width; i++) {
-			headersAdded.push("Time " + (i + 1))
-		}
-	} else if (width == 1) {
-		headersAdded = ["Shift"]
-	}
-
-	headers.splice(2,0,...headersAdded)
 	
-	headers.forEach((headerText) => {
+	let head = ["Day", "Date"]
+	head.forEach((headerText) => {
+		const th = document.createElement("th")
+		th.textContent = headerText
+		headerRow.appendChild(th)
+	})
+
+	let headerCount = 0
+	datalist[0].forEach((headerText) => {
+		const th = document.createElement("th")
+		th.classList.add("day-heads")
+		th.textContent = headerText
+		th.dataset.x = headerCount++
+		th.dataset.y = 0
+		headerRow.appendChild(th)
+	})
+
+	let tail = ["Date", "Day"]
+	tail.forEach((headerText) => {
 		const th = document.createElement("th")
 		th.textContent = headerText
 		headerRow.appendChild(th)
@@ -43,7 +47,7 @@ function createTable() {
 
 	const tbody = document.createElement("tbody")
 	
-	for (let i = 0; i < datalist.length; i++) {
+	for (let i = 1; i < datalist.length; i++) {
 		let row = datalist[i]
 		const tr = document.createElement("tr")
 		//day
@@ -106,7 +110,6 @@ function CreateShifts() {
 	tableDisplay.appendChild(title)
 
 	//!min width for col = 24ch
-	//TODO Add shift display using GetShiftsFromNames()
 	const shiftTable = document.createElement("div")
 	shiftTable.classList.add("shifts")
 	shiftTable.style.width = document.querySelector(".the-table").offsetWidth + "px"

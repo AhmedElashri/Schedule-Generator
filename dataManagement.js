@@ -1,10 +1,10 @@
 var datalist = []
 var shifts = []
 var selectedName = ""
-const SEPARATORS = /[ ,;|_\-:/+]+/
+const SEPARATORS = /[,;|_\-:/+]+/
 
 function GetShiftCount() {
-	return Number(datalist[0].length - 2)
+	return Number(datalist[datalist.length - 1].length - 2)
 }
 
 function CreateDataList(width = 2, height = GetDayCount()) {
@@ -12,10 +12,24 @@ function CreateDataList(width = 2, height = GetDayCount()) {
 	var dayIndex = GetFirstDay()
 	if (width <= 0) width = 2 
 
+	// HEADERS
+	var headers = ["Morning", "Night"]
+
+	if (width > 2) {
+		headers = []
+		for (let i = 0; i < width; i++) {
+			headers.push("Time " + (i + 1))
+		}
+	} else if (width == 1) {
+		headers = ["Shift"]
+	}
+	array.push(headers)
+
+	//Rows
 	for (let i = 0; i < height; i++) {
 		let row = [DAYS[(dayIndex + i) % 7], i + 1]
 		for (let i = 0; i < width; i++) {
-			row.push(null)
+			row.push("")
 		}
 		array.push(row)
 	}
@@ -25,13 +39,14 @@ function CreateDataList(width = 2, height = GetDayCount()) {
 }
 
 function EditDataList(x, y, value) {
-	if (x < 2 || x > (GetShiftCount() + 2)) return
+	if (y != 0 &&(x < 2 ) || x > (GetShiftCount() + 2)) return
 	datalist[y][x] = value
 	createTable()
 }
 
 function GetUniqueNames() {
-	var nameList = datalist.map(subarray => subarray.slice(-GetShiftCount()))
+	var nameList = datalist.slice(1).map(subarray => subarray.slice(-GetShiftCount()))
+	console.log(nameList)
 	var flatNameList = nameList.flat().flatMap(str => String(str)
 		.split(SEPARATORS)
 		.map(s => s.trim())
@@ -44,7 +59,7 @@ function GetShiftsFromNames() {
 	shifts = []
 	var uniqueNames = GetUniqueNames()
 
-	var dataSplitDelimiters = datalist.flat().flatMap(str => String(str)
+	var dataSplitDelimiters = datalist.slice(1).flat().flatMap(str => String(str)
 		.split(SEPARATORS)
 		.map(s => s.trim())
 	)
@@ -52,7 +67,6 @@ function GetShiftsFromNames() {
 	uniqueNames.forEach(name => {
 		shifts.push([name, dataSplitDelimiters.filter(data => data === name).length])
 	});
-	console.log(dataSplitDelimiters)
 }
 
 function AddTestData(x = 7) {

@@ -83,6 +83,10 @@ h2 {
 		color: white;
 	}
 
+	& .day-heads:hover {
+			box-shadow: 0 0 2px 2px inset yellow ;
+	}
+
 	& td {
 		padding-block: 2px;
 	}
