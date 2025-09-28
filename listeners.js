@@ -37,7 +37,7 @@ function FileInputUsed(event){
 
 function NameSetter(event) {
 	var cell = event.target
-	if (cell && cell.classList.contains("people") && cell.tagName ==="TD") {
+	if ((cell && cell.classList.contains("people") && cell.tagName ==="TD") || (cell.tagName === "TH"))  {
 		EditDataList(cell.dataset.x, cell.dataset.y, selectedName)
 	}
 }
