@@ -81,10 +81,16 @@ h2 {
 	& th {
 		background-color: var(--Table-Title);
 		color: white;
+		min-width: 6ch;
 	}
 
-	& .day-heads:hover {
+	& .day-heads{
+		min-width: 14ch;
+		white-space: pre-line;
+
+		&:hover {
 			box-shadow: 0 0 2px 2px inset yellow ;
+		}
 	}
 
 	& td {
@@ -102,6 +108,7 @@ h2 {
 	& .people {
 		width: 200px;
 		min-width: 4.5rem;
+		/* white-space: pre-wrap; */
 
 		&:hover {
 			box-shadow: 0 0 2px 2px inset blue ;
@@ -137,4 +144,13 @@ h2 {
 	& .shift-person:nth-child(odd) {
 		background-color: var(--Shifts-Secondary);
 	}
+}
+
+.sign-box {
+	margin-top: 1rem;
+	display: flex;
+	margin-left: auto;
+	font-size: 18px;
+
+	transform: translateX(5%);
 }

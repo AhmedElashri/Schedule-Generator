@@ -44,6 +44,7 @@ function NameSetter(event) {
 
 function MonthSelectorSelect() {
 	SelectMonth(Number(this.value))
+	CUSTOM_TABLE_TITLE_SELECTOR.value = GetTextMonth() + " " + GetTextYear() + " Schedule"
 	CreateDataList(SHIFT_SELECTOR.value)
 }
 

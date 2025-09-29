@@ -68,7 +68,7 @@ function createTable() {
 		//People
 		for (let j = 0; j < width; j++) {
 			let td = document.createElement("td")
-			td.textContent = row[j+2]
+			td.innerHTML = row[j+2]
 			td.classList.add("people")
 			td.dataset.x = j+2
 			td.dataset.y = i
@@ -99,6 +99,7 @@ function createTable() {
 	tableDisplay.appendChild(table)
 	let shiftEnabler = document.querySelector("#shift-enabler")
 	if (shiftEnabler.checked) CreateShifts()
+	CreateSignatureSlot()
 }
 
 function CreateShifts() {
@@ -138,4 +139,25 @@ function CreateShifts() {
 		person.style.minWidth = "max(16.5ch" + (mostCharacters * 9) + "px)"
 	})
 	//End of Resize
+}
+
+function CreateSignatureSlot() {
+	const tableDisplay = document.querySelector(".table-save")
+
+	const signBox = document.createElement("div")
+	signBox.classList.add("sign-box")
+
+	let signLabel = document.createElement("div")
+	signLabel.classList.add("sign-label")
+	signLabel.textContent = "Approved by: "
+
+	signBox.appendChild(signLabel)
+
+	let signArea = document.createElement("div")
+	signArea.classList.add("sign-area")
+	signArea.textContent = "___________________________"
+	
+	signBox.appendChild(signArea)
+
+	tableDisplay.appendChild(signBox)
 }
