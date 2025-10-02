@@ -42,5 +42,5 @@ function ReadShiftMetadata(image) {
 
  function ImportShiftData(data) {
      datalist = data
-     createTable()
+     createSchedule()
 }

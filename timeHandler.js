@@ -24,12 +24,12 @@ function ResetTime() {
 
 function SelectYear(offset) {
 	selectedDate.setFullYear(currentDate.getFullYear() + offset)
-	createTable()
+	createSchedule()
 }
 
 function SelectMonth(month) {
 	selectedDate.setMonth(month)
-	createTable()
+	createSchedule()
 }
 
 function GetFirstDay() {

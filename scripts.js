@@ -1,6 +1,7 @@
 const YEAR_CONTAINER = document.querySelector(".year-mod-container")
 const MONTH_CONTAINER = document.querySelector(".month-mod-container")
 const SHIFT_CONTAINER = document.querySelector(".shift-counter-container")
+const SORTABLE_ITEM_CONTAINER = document.querySelector(".sortable-item-container")
 const SHIFT_ENABLER_CONTAINER = document.querySelector(".shift-enabler-container")
 const FILE_INPUT_CONTAINER = document.querySelector(".file-input-container")
 const NAME_SELECTOR_CONTAINER = document.querySelector(".name-selector-container")
@@ -119,3 +120,33 @@ var SaveImageButton = document.createElement("button")
 SaveImageButton.id = "save-image"
 SaveImageButton.textContent = "Save As Image"
 saveImageContainer.appendChild(SaveImageButton)
+
+//Sortable Item Container
+var itemOrder = ["Schedule", "Shifts", "Signature"]
+itemOrder.forEach((item) => {
+	let sortableItem = document.createElement("div")
+	sortableItem.classList.add("sortable-item")
+	sortableItem.dataset.name = item
+
+	let checkboxHolder = document.createElement("checkbox-holder")
+	checkboxHolder.classList.add("part-checkbox")
+
+	let checkbox = document.createElement("input")
+	checkbox.type = "checkbox"
+	checkboxHolder.appendChild(checkbox)
+
+	sortableItem.appendChild(checkboxHolder)
+
+	let itemName = document.createElement("div")
+	itemName.classList.add("part-name")
+	itemName.textContent = item
+
+	sortableItem.appendChild(itemName)
+
+	let ItemHandle = document.createElement("div")
+	ItemHandle.classList.add("part-handle")
+	ItemHandle.textContent = "☰"
+
+	sortableItem.appendChild(ItemHandle)
+	SORTABLE_ITEM_CONTAINER.appendChild(sortableItem)
+})

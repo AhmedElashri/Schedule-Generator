@@ -7,7 +7,7 @@ function GetShiftCount() {
 	return Number(datalist[datalist.length - 1].length - 2)
 }
 
-function CreateDataList(width = 2, height = GetDayCount()) {
+function createDataList(width = 2, height = GetDayCount()) {
 	var array = []
 	var dayIndex = GetFirstDay()
 	if (width <= 0) width = 2 
@@ -35,13 +35,13 @@ function CreateDataList(width = 2, height = GetDayCount()) {
 	}
 
 	datalist = array
-	createTable()
+	renderSchedule()
 }
 
 function EditDataList(x, y, value) {
 	if (y != 0 &&(x < 2 ) || x > (GetShiftCount() + 2)) return
 	datalist[y][x] = value
-	createTable()
+	renderSchedule()
 }
 
 function GetUniqueNames() {
@@ -72,10 +72,10 @@ function GetShiftsFromNames() {
 function AddTestData(x = 7) {
 	if (x > 7) x = 7
 	let names = ["Ahmad", "Mohammad", "Yousef", "Omar", "Khaled", "Osama", "Mitsubishi Material"]
-	for (let i = 0; i < GetDayCount(); i++) {
+	for (let i = 1; i < GetDayCount() + 1; i++) {
 		for (let j = 0; j < GetShiftCount(); j++) {
 			datalist[i][j+2] = names[Math.floor(Math.random() * x)]
 		}
 	}
-	createTable()
+	renderSchedule()
 }

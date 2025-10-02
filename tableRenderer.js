@@ -1,6 +1,13 @@
-function createTable() {
-	width = GetShiftCount()
-	const tableDisplay = document.querySelector(".table-save")
+// todo make a function that lets you order table, shifts, and signature
+const FNDICT = {
+	createSchedule: createSchedule,
+	createShifts: createShifts,
+	createSignature: createSignature
+}
+
+const tableDisplay = document.querySelector(".table-save")
+
+function renderSchedule() {
 	tableDisplay.textContent = ""
 
 	const title = document.createElement("h1")
@@ -11,6 +18,27 @@ function createTable() {
 		title.textContent = GetTextMonth() + " " + GetTextYear() + " Schedule"
 	}
 	tableDisplay.appendChild(title)
+
+
+	var itemOrder = []
+	var itemOrderList = document.querySelectorAll(".sortable-item")
+	itemOrderList.forEach((item) => {
+		let funcName = "create" + item.dataset.name
+		itemOrder.push(window[funcName])
+	})
+
+	console.log(itemOrder)
+	itemOrder.forEach((item) => {
+		item()
+	})
+
+	//cleanup
+	document.querySelector(".shifts").style.width = document.querySelector(".the-table").offsetWidth + "px"
+
+}
+
+function createSchedule() {
+	width = GetShiftCount()
 
 	const table = document.createElement("table")
 	table.classList.add("the-table")
@@ -97,14 +125,12 @@ function createTable() {
 
 	// Add table to the DOM (imma keep this comment, idk why i said dom)
 	tableDisplay.appendChild(table)
-	let shiftEnabler = document.querySelector("#shift-enabler")
-	if (shiftEnabler.checked) CreateShifts()
-	CreateSignatureSlot()
+	// let shiftEnabler = document.querySelector("#shift-enabler")
+	// if (shiftEnabler.checked) createShifts()
+	// createSignature()
 }
 
-function CreateShifts() {
-
-	const tableDisplay = document.querySelector(".table-save")
+function createShifts() {
 
 	const title = document.createElement("h2")
 	title.textContent = "Shifts"
@@ -113,7 +139,6 @@ function CreateShifts() {
 	//!min width for col = 24ch
 	const shiftTable = document.createElement("div")
 	shiftTable.classList.add("shifts")
-	shiftTable.style.width = document.querySelector(".the-table").offsetWidth + "px"
 
 	GetShiftsFromNames()
 	shifts.forEach(person => {
@@ -141,8 +166,7 @@ function CreateShifts() {
 	//End of Resize
 }
 
-function CreateSignatureSlot() {
-	const tableDisplay = document.querySelector(".table-save")
+function createSignature() {
 
 	const signBox = document.createElement("div")
 	signBox.classList.add("sign-box")
