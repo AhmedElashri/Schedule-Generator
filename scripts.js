@@ -133,6 +133,8 @@ itemOrder.forEach((item) => {
 
 	let checkbox = document.createElement("input")
 	checkbox.type = "checkbox"
+	checkbox.checked = true
+	checkbox.classList.add("item-checkbox")
 	checkboxHolder.appendChild(checkbox)
 
 	sortableItem.appendChild(checkboxHolder)

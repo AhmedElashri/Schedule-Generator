@@ -7,6 +7,7 @@ const FILE_INPUT = document.querySelector("#file-input")
 const NAME_SELECTOR = document.querySelector("#name-selector")
 const CUSTOM_TABLE_TITLE_SELECTOR = document.querySelector("#custom-table-title")
 const SAVE_IMAGE = document.querySelector("#save-image")
+const ITEM_CHECKBOX = document.querySelectorAll(".item-checkbox")
 
 YEAR_SELECTOR.addEventListener("change", YearSelectorSelect)
 MONTH_SELECTOR.addEventListener("change", MonthSelectorSelect)
@@ -17,6 +18,9 @@ NAME_SELECTOR.addEventListener("change", SelectName)
 TEST_DATA.addEventListener("click", TestData)
 CUSTOM_TABLE_TITLE_SELECTOR.addEventListener("change", ChangeTableTitle)
 SAVE_IMAGE.addEventListener("click", SaveImage)
+ITEM_CHECKBOX.forEach((checkbox) => {
+  checkbox.addEventListener("change", renderSchedule)
+})
 
 function ChangeTableTitle() {
 	renderSchedule()

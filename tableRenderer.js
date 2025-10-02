@@ -1,4 +1,3 @@
-// todo make a function that lets you order table, shifts, and signature
 const FNDICT = {
 	createSchedule: createSchedule,
 	createShifts: createShifts,
@@ -8,6 +7,7 @@ const FNDICT = {
 const tableDisplay = document.querySelector(".table-save")
 
 function renderSchedule() {
+	//todo make it check if they are enabled
 	tableDisplay.textContent = ""
 
 	const title = document.createElement("h1")
@@ -15,7 +15,8 @@ function renderSchedule() {
 	if (CUSTOM_TABLE_TITLE_SELECTOR.value != "" && CUSTOM_TABLE_TITLE_SELECTOR.value !== null) {
 		title.textContent = CUSTOM_TABLE_TITLE_SELECTOR.value
 	} else {
-		title.textContent = GetTextMonth() + " " + GetTextYear() + " Schedule"
+		CUSTOM_TABLE_TITLE_SELECTOR.value = GetTextMonth() + " " + GetTextYear() + " Schedule"
+		title.textContent = CUSTOM_TABLE_TITLE_SELECTOR.value
 	}
 	tableDisplay.appendChild(title)
 
@@ -23,8 +24,10 @@ function renderSchedule() {
 	var itemOrder = []
 	var itemOrderList = document.querySelectorAll(".sortable-item")
 	itemOrderList.forEach((item) => {
-		let funcName = "create" + item.dataset.name
-		itemOrder.push(window[funcName])
+		if (item.querySelector(".item-checkbox").checked) {
+			let funcName = "create" + item.dataset.name
+			itemOrder.push(window[funcName])
+		}
 	})
 
 	console.log(itemOrder)
